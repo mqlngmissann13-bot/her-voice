@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 30px 15px;
+  background: #eee7dc;
+  color: #4f463d;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.book {
+  max-width: 850px;
+  margin: auto;
+  background: #f8f3e9;
+  border: 1px solid #d8cdbd;
+  box-shadow: 0 8px 30px rgba(70, 55, 40, 0.12);
+}
+
+.cover,
+.page,
+.ending {
+  min-height: 70vh;
+  padding: 60px 45px;
+  border-bottom: 1px solid #ded3c3;
+}
+
+.cover {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.small-title {
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 58px;
+  font-weight: normal;
+  margin: 5px 0;
+}
+
+h2 {
+  font-weight: normal;
+  color: #756657;
+}
+
+.cover h2 {
+  font-size: 28px;
+  font-style: italic;
+  margin-top: 0;
+}
+
+.tagline {
+  font-style: italic;
+  color: #8b7d6d;
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 11px 20px;
+  border: 1px solid #b9aa97;
+  background: transparent;
+  color: #625548;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #eee6d8;
+}
+
+.page h2,
+.ending h2 {
+  border-bottom: 1px solid #cfc2b1;
+  padding-bottom: 12px;
+}
+
+.page p,
+.page label,
+.ending p {
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+label {
+  display: block;
+  margin: 18px 0;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.writing-line {
+  margin-top: 40px;
+  color: #a29483
