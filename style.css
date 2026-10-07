@@ -1,0 +1,1865 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    background: #f5e9dc;
+    color: #403832;
+    overflow-x: hidden;
+}
+
+.room {
+    position: relative;
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 28px 20px 100px;
+    overflow: hidden;
+}
+
+/* WELCOME */
+
+.welcome {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.welcome h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.welcome p {
+    font-size: 12px;
+    opacity: 0.65;
+    margin-top: 5px;
+}
+
+/* STATUS */
+
+.status-card {
+    background: rgba(255,255,255,0.65);
+    border: 2px solid rgba(255,255,255,0.8);
+    border-radius: 22px;
+    padding: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(100,70,50,0.08);
+}
+
+.status-card p {
+    font-size: 11px;
+    margin-top: 7px;
+    opacity: 0.65;
+}
+
+.status-card strong {
+    font-size: 13px;
+}
+
+.progress {
+    height: 9px;
+    background: #e5d5c5;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 4px 0;
+}
+
+.progress span {
+    display: block;
+    width: 47%;
+    height: 100%;
+    background: #d99b82;
+    border-radius: 20px;
+}
+
+.progress .battery {
+    width: 38%;
+    background: #91aaa0;
+}
+
+/* WINDOW */
+
+.window {
+    position: relative;
+    height: 190px;
+    background: #8ca7b8;
+    border: 8px solid #fff8ef;
+    border-radius: 28px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(70,60,50,0.12);
+}
+
+.window p {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+    font-size: 11px;
+    line-height: 1.6;
+    color: white;
+    opacity: 0.9;
+}
+
+.moon {
+    font-size: 48px;
+    color: #fff5c7;
+    text-align: right;
+}
+
+.stars {
+    color: white;
+    letter-spacing: 8px;
+    font-size: 14px;
+}
+
+/* DESK */
+
+.desk {
+    height: 115px;
+    background: #c38f68;
+    border-radius: 18px;
+    margin-top: -5px;
+    position: relative;
+    box-shadow: 0 10px 18px rgba(80,50,30,0.12);
+}
+
+.computer {
+    position: absolute;
+    left: 25px;
+    top: -65px;
+    width: 145px;
+    height: 95px;
+    background: #f2e5d4;
+    border: 7px solid #fff8ef;
+    border-radius: 14px;
+    padding: 8px;
+}
+
+.screen {
+    height: 100%;
+    background: #657c7d;
+    color: #fff8ef;
+    border-radius: 7px;
+    padding: 12px;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.plant {
+    position: absolute;
+    right: 25px;
+    top: -48px;
+    font-size: 48px;
+}
+
+.camera {
+    position: absolute;
+    right: 95px;
+    top: 35px;
+    font-size: 30px;
+}
+
+/* BED */
+
+.bed {
+    position: relative;
+    height: 125px;
+    background: #d99b82;
+    border-radius: 28px 28px 12px 12px;
+    margin-top: 25px;
+    box-shadow: 0 10px 20px rgba(80,50,30,0.1);
+}
+
+.pillow {
+    position: absolute;
+    left: 18px;
+    top: 15px;
+    width: 95px;
+    height: 55px;
+    background: #fff8ef;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.cat {
+    position: absolute;
+    right: 28px;
+    top: 35px;
+    font-size: 42px;
+}
+
+/* BUTTONS */
+
+.room-button {
+    position: absolute;
+    border: 0;
+    padding: 11px 14px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 5px 12px rgba(60,40,30,0.12);
+    transition: transform 0.2s;
+}
+
+.room-button:active {
+    transform: scale(0.94);
+}
+
+.lore {
+    top: 335px;
+    left: 32px;
+    background: #f4c6a8;
+}
+
+.memories {
+    top: 390px;
+    right: 25px;
+    background: #c5d9c7;
+}
+
+.music {
+    top: 535px;
+    left: 30px;
+    background: #c9c3df;
+}
+
+.mood {
+    top: 575px;
+    right: 28px;
+    background: #f2d78e;
+}
+
+/* NOTE */
+
+.little-note {
+    background: #fff1a8;
+    padding: 18px;
+    margin: 28px 5px;
+    transform: rotate(-1deg);
+    box-shadow: 4px 6px 15px rgba(60,40,20,0.1);
+    font-size: 12px;
+}
+
+.little-note b {
+    font-size: 13px;
+}
+
+.little-note p {
+    margin-top: 7px;
+}
+
+/* NAV */
+
+nav {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 470px;
+    background: rgba(255,248,239,0.92);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 9px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 8px 25px rgba(60,40,30,0.15);
+}
+
+nav button {
+    border: 0;
+    background: none;
+    font-size: 21px;
+    color: #554942;
+    cursor: pointer;
+}
+
+nav small {
+    display: block;
+    font-size: 8px;
+    margin-top: 2px;
+}
+/* =========================================
+   THE LORE PAGE
+========================================= */
+
+.lore-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 50px;
+    background: #f7eadf;
+}
+
+.back {
+    display: inline-block;
+    color: #554942;
+    text-decoration: none;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.lore-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.lore-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.lore-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    margin: 5px 0;
+    letter-spacing: 2px;
+}
+
+.lore-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* DIARY CARD */
+
+.entry {
+    background: #fffdf7;
+    padding: 22px;
+    border-radius: 5px;
+    box-shadow: 5px 8px 20px rgba(70,50,40,0.12);
+    transform: rotate(-0.8deg);
+    position: relative;
+}
+
+.entry::before {
+    content: "♡";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 22px;
+    opacity: 0.35;
+}
+
+.entry-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    letter-spacing: 1px;
+    opacity: 0.55;
+    border-bottom: 1px dashed #c9b9aa;
+    padding-bottom: 10px;
+}
+
+.entry h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    margin: 18px 0 12px;
+}
+
+#diaryText {
+    width: 100%;
+    min-height: 230px;
+    resize: vertical;
+    border: none;
+    outline: none;
+    background: repeating-linear-gradient(
+        #fffdf7,
+        #fffdf7 28px,
+        #e8ddd2 29px
+    );
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 29px;
+    color: #403832;
+}
+
+#diaryText::placeholder {
+    color: #a89b91;
+    font-style: italic;
+}
+
+/* BUTTONS */
+
+.entry-tools {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.entry-tools button {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 14px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.entry-tools button:first-child {
+    background: #d99b82;
+    color: white;
+}
+
+.entry-tools button:last-child {
+    background: #eee2d7;
+    color: #554942;
+}
+
+#savedMessage {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 12px;
+    opacity: 0.7;
+}
+
+/* PROMPTS */
+
+.little-prompts {
+    margin-top: 35px;
+}
+
+.little-prompts > p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.little-prompts button {
+    display: block;
+    width: 100%;
+    border: none;
+    background: rgba(255,255,255,0.65);
+    padding: 14px;
+    margin-bottom: 9px;
+    border-radius: 15px;
+    text-align: left;
+    font-family: inherit;
+    font-size: 11px;
+    color: #554942;
+    cursor: pointer;
+}
+
+.little-prompts button:active {
+    transform: scale(0.98);
+}
+/* =========================================
+   MEMORIES PAGE
+========================================= */
+
+.memories-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 60px;
+    background: #f7eadf;
+}
+
+.memories-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.memories-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.memories-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.memories-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* INTRO */
+
+.memory-intro {
+    background: #c9d9d2;
+    padding: 25px;
+    border-radius: 22px;
+    text-align: center;
+    transform: rotate(-0.7deg);
+    box-shadow: 4px 7px 18px rgba(60,50,40,0.1);
+}
+
+.camera-big {
+    font-size: 45px;
+    margin-bottom: 8px;
+}
+
+.memory-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+}
+
+.memory-intro p {
+    font-size: 11px;
+    margin: 8px 0 18px;
+    opacity: 0.7;
+}
+
+/* UPLOAD */
+
+.upload-button {
+    display: inline-block;
+    background: #fff8ef;
+    padding: 11px 17px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    box-shadow: 2px 4px 10px rgba(50,40,30,0.1);
+}
+
+.upload-button input {
+    display: none;
+}
+
+/* PREVIEW */
+
+.memory-preview {
+    background: #fffdf7;
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 4px 7px 18px rgba(60,50,40,0.12);
+}
+
+.memory-preview img {
+    display: block;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.memory-preview input,
+.memory-preview textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #f5eee7;
+    padding: 11px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 11px;
+    margin-bottom: 8px;
+}
+
+.memory-preview textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.memory-preview button {
+    border: none;
+    background: #d99b82;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ARCHIVE */
+
+.archive-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    margin: 35px 0 18px;
+}
+
+/* MEMORY CARD */
+
+.memory-card {
+    background: #fffdf7;
+    padding: 10px 10px 18px;
+    margin-bottom: 25px;
+    box-shadow: 4px 7px 18px rgba(60,50,40,0.12);
+}
+
+.memory-card:nth-child(odd) {
+    transform: rotate(-1.2deg);
+}
+
+.memory-card:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.memory-card img {
+    display: block;
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+}
+
+.memory-info {
+    padding: 12px 7px 0;
+}
+
+.memory-info small {
+    font-size: 8px;
+    letter-spacing: 1px;
+    opacity: 0.5;
+}
+
+.memory-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.memory-info p {
+    font-size: 11px;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+/* =========================================
+   MUSIC PAGE
+========================================= */
+
+.music-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 60px;
+    background: #eee9f5;
+}
+
+.music-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.music-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.music-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.music-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* NOW PLAYING */
+
+.now-playing {
+    background: #fffdf7;
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 4px 8px 20px rgba(60,50,70,0.12);
+}
+
+.album {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.cd {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    background:
+        repeating-radial-gradient(
+            circle,
+            #d7cce5 0,
+            #d7cce5 3px,
+            #b9aacd 4px,
+            #d7cce5 7px
+        );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 8px 15px rgba(60,50,70,0.18);
+}
+
+.cd::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #fffdf7;
+    border-radius: 50%;
+}
+
+.cd span {
+    position: relative;
+    z-index: 2;
+    font-size: 15px;
+}
+
+.playing-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    opacity: 0.5;
+}
+
+.now-playing h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    margin: 7px 0 3px;
+}
+
+.now-playing > p:not(.playing-label) {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.spotify-button {
+    display: inline-block;
+    margin-top: 17px;
+    padding: 11px 18px;
+    background: #a894bd;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 10px;
+}
+
+/* ADD SONG */
+
+.add-song {
+    background: #d5e1dc;
+    padding: 20px;
+    margin-top: 25px;
+    border-radius: 20px;
+    transform: rotate(0.7deg);
+}
+
+.add-song h2,
+.playlist h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    margin-bottom: 14px;
+}
+
+.add-song input {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.75);
+    padding: 11px;
+    border-radius: 11px;
+    margin-bottom: 8px;
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.add-song button {
+    border: none;
+    background: #8b9f96;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+/* PLAYLIST */
+
+.playlist {
+    margin-top: 35px;
+}
+
+.song-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.72);
+    padding: 13px 15px;
+    margin-bottom: 9px;
+    border-radius: 16px;
+}
+
+.song-item strong {
+    display: block;
+    font-size: 12px;
+}
+
+.song-item small {
+    display: block;
+    font-size: 9px;
+    opacity: 0.55;
+    margin-top: 3px;
+}
+
+.song-item button {
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #c7bad7;
+    cursor: pointer;
+}
+ /* =========================================
+    MOOD PAGE
+ ========================================= */
+
+.mood-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 60px;
+    background: #f3e8dc;
+}
+
+.mood-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.mood-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.mood-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.mood-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* MOOD CARD */
+
+.mood-card {
+    background: #fffdf7;
+    padding: 23px;
+    border-radius: 24px;
+    box-shadow: 4px 8px 18px rgba(60,50,40,0.1);
+    text-align: center;
+    transform: rotate(-0.6deg);
+}
+
+.mood-card h2,
+.mood-note h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.mood-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.mood-options button {
+    border: none;
+    background: #f1e6f5;
+    border-radius: 18px;
+    padding: 13px 5px;
+    font-size: 25px;
+    cursor: pointer;
+    transition: transform 0.15s;
+}
+
+.mood-options button:nth-child(2) {
+    background: #f8dfdf;
+}
+
+.mood-options button:nth-child(3) {
+    background: #e1e9f3;
+}
+
+.mood-options button:nth-child(4) {
+    background: #e7e0f2;
+}
+
+.mood-options button:nth-child(5) {
+    background: #dfece5;
+}
+
+.mood-options button:nth-child(6) {
+    background: #f4ead7;
+}
+
+.mood-options button:active {
+    transform: scale(0.92);
+}
+
+.mood-options small {
+    display: block;
+    font-size: 9px;
+    margin-top: 5px;
+    color: #554942;
+}
+
+#selectedMood {
+    margin-top: 18px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+/* NOTE */
+
+.mood-note {
+    background: #d9e6df;
+    padding: 21px;
+    margin-top: 25px;
+    border-radius: 20px;
+    transform: rotate(0.7deg);
+}
+
+.mood-note textarea {
+    width: 100%;
+    min-height: 110px;
+    border: none;
+    outline: none;
+    resize: vertical;
+    background: rgba(255,255,255,0.7);
+    border-radius: 13px;
+    padding: 13px;
+    font-family: inherit;
+    font-size: 11px;
+    color: #403832;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.mood-note textarea::placeholder {
+    color: #9a948e;
+}
+
+.mood-note button {
+    border: none;
+    background: #8da69a;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#moodMessage {
+    font-size: 9px;
+    opacity: 0.7;
+    margin-top: 9px;
+}
+
+/* LAST MOOD */
+
+.last-mood {
+    background: #e5d9f2;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.last-mood > p {
+    font-size: 9px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+#lastMood {
+    margin-top: 10px;
+}
+
+.last-emoji {
+    display: block;
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+#lastMood strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+}
+
+#lastMood small {
+    display: block;
+    font-size: 8px;
+    opacity: 0.5;
+    margin-top: 4px;
+}
+
+#lastMood p {
+    font-size: 10px;
+    opacity: 0.65;
+    margin-top: 10px;
+}
+/* =========================================
+   GROWTH PAGE
+========================================= */
+
+.growth-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 60px;
+    background: #e9f0e8;
+}
+
+.growth-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.growth-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.growth-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.growth-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* GOAL */
+
+.growth-card {
+    background: #fffdf7;
+    padding: 25px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 4px 8px 18px rgba(50,70,50,0.1);
+    transform: rotate(-0.7deg);
+}
+
+.plant-big {
+    font-size: 55px;
+    margin-bottom: 8px;
+}
+
+.growth-card h2,
+.wins-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+.growth-card input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: #eef3eb;
+    padding: 12px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.growth-card button,
+.wins-card button {
+    border: none;
+    background: #829b82;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#goalMessage {
+    font-size: 9px;
+    opacity: 0.65;
+    margin-top: 9px;
+}
+
+/* TINY WINS */
+
+.wins-card {
+    background: #f4dfd7;
+    padding: 21px;
+    margin-top: 25px;
+    border-radius: 20px;
+    transform: rotate(0.6deg);
+}
+
+.wins-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 95px;
+    resize: vertical;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.7);
+    padding: 12px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.wins-card textarea::placeholder {
+    color: #9d8e88;
+}
+
+/* WIN LIST */
+
+#winList {
+    margin-top: 18px;
+}
+
+.win-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.7);
+    padding: 12px;
+    border-radius: 13px;
+    margin-bottom: 8px;
+}
+
+.win-item > span {
+    font-size: 15px;
+}
+
+.win-item strong {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.win-item small {
+    display: block;
+    font-size: 8px;
+    opacity: 0.5;
+    margin-top: 4px;
+}
+
+/* CURRENT GOAL */
+
+.goal-display {
+    background: #d8e5d5;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.goal-display > p {
+    font-size: 9px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+#currentGoal {
+    margin-top: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+}
+.growth {
+    background: #c9dfc4;
+    color: #40533d;
+    top: 68%;
+    left: 8%;
+}
+ /* =========================================
+    ME PAGE
+ ========================================= */
+
+.me-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 60px;
+    background: #f2e7ef;
+}
+
+.me-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.me-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.me-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.me-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* PROFILE */
+
+.me-card {
+    background: #fffdf7;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 4px 8px 18px rgba(70,50,60,0.1);
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin: auto;
+    border-radius: 50%;
+    background: #d9c7e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    box-shadow: 3px 5px 12px rgba(70,50,60,0.12);
+}
+
+.me-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin: 15px 0 5px;
+}
+
+.me-card p {
+    font-size: 11px;
+    opacity: 0.65;
+    line-height: 1.5;
+}
+
+/* ABOUT */
+
+.about-card {
+    background: #f5dfc9;
+    padding: 21px;
+    margin-top: 25px;
+    border-radius: 21px;
+    transform: rotate(0.6deg);
+}
+
+.about-card h2,
+.facts-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    margin-bottom: 17px;
+}
+
+.about-card label {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    margin-bottom: 11px;
+    opacity: 0.75;
+}
+
+.about-card input,
+.about-card textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.72);
+    padding: 11px;
+    border-radius: 11px;
+    margin-top: 5px;
+    font-family: inherit;
+    font-size: 11px;
+    color: #403832;
+}
+
+.about-card textarea {
+    min-height: 75px;
+    resize: vertical;
+}
+
+.about-card button {
+    border: none;
+    background: #a487a9;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#meMessage {
+    font-size: 9px;
+    opacity: 0.65;
+    margin-top: 9px;
+}
+
+/* FACTS */
+
+.facts-card {
+    background: #dce8df;
+    padding: 21px;
+    margin-top: 30px;
+    border-radius: 20px;
+}
+
+.fact-row {
+    background: rgba(255,255,255,0.65);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+
+.fact-row span {
+    display: block;
+    font-size: 9px;
+    opacity: 0.55;
+    margin-bottom: 4px;
+}
+
+.fact-row strong {
+    font-size: 11px;
+    font-weight: 500;
+}
+ /* =========================================
+    CALENDAR PAGE
+ ========================================= */
+
+.calendar-page {
+    min-height: 100vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px 20px 60px;
+    background: #f5ead8;
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.calendar-header p {
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+.calendar-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.calendar-header span {
+    font-size: 11px;
+    opacity: 0.65;
+}
+
+/* CALENDAR */
+
+.calendar-card {
+    background: #fffdf7;
+    padding: 18px;
+    border-radius: 22px;
+    box-shadow: 4px 8px 18px rgba(60,50,40,0.1);
+}
+
+.calendar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.calendar-top h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+}
+
+.calendar-top button {
+    border: none;
+    background: #e8d9e9;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 23px;
+    color: #554942;
+    cursor: pointer;
+}
+
+.weekdays,
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.weekdays span {
+    text-align: center;
+    font-size: 8px;
+    opacity: 0.5;
+    padding-bottom: 6px;
+}
+
+.calendar-day {
+    min-height: 42px;
+    border: none;
+    background: #f7eee5;
+    border-radius: 10px;
+    position: relative;
+    font-family: inherit;
+    color: #403832;
+    cursor: pointer;
+}
+
+.calendar-day:hover {
+    background: #eadde8;
+}
+
+.calendar-day i {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-style: normal;
+    font-size: 13px;
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+}
+
+/* EVENT FORM */
+
+.event-card {
+    background: #dce8df;
+    padding: 21px;
+    margin-top: 25px;
+    border-radius: 21px;
+    transform: rotate(0.6deg);
+}
+
+.event-card h2,
+.upcoming-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.event-card input,
+.event-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.72);
+    padding: 11px;
+    border-radius: 11px;
+    font-family: inherit;
+    font-size: 11px;
+    margin-bottom: 9px;
+}
+
+.event-card textarea {
+    min-height: 75px;
+    resize: vertical;
+}
+
+.event-card button {
+    border: none;
+    background: #829b82;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#eventMessage {
+    font-size: 9px;
+    opacity: 0.65;
+    margin-top: 9px;
+}
+
+/* UPCOMING */
+
+.upcoming-card {
+    margin-top: 32px;
+}
+
+.event-item {
+    display: grid;
+    grid-template-columns: 70px 1fr 35px;
+    gap: 10px;
+    align-items: center;
+    background: #fffdf7;
+    padding: 13px;
+    border-radius: 15px;
+    margin-bottom: 9px;
+    box-shadow: 2px 4px 10px rgba(60,50,40,0.07);
+}
+
+.event-item small {
+    font-size: 8px;
+    opacity: 0.5;
+}
+
+.event-item strong {
+    font-size: 11px;
+}
+
+.event-item p {
+    font-size: 9px;
+    opacity: 0.6;
+    margin-top: 3px;
+}
+
+.event-item > button {
+    border: none;
+    background: #eadde8;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.event-item.completed strong {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.empty-events {
+    text-align: center;
+    font-size: 10px;
+    opacity: 0.55;
+}
+.calendar {
+    background: #f3d7a8;
+    color: #66503a;
+    top: 68%;
+    right: 8%;
+}
+.calendar-day.today {
+    background: #f3c6c6;
+    box-shadow: 0 0 0 2px #fffdf7, 0 0 0 4px #d99b82;
+    font-weight: 600;
+}
+.calendar-day.selected {
+    background: #e5d9f2;
+    box-shadow: 0 3px 8px rgba(70,50,60,0.12);
+    transform: scale(1.05);
+    font-weight: 600;
+}
+.calendar-day i {
+    color: #d99b82;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.calendar-day:has(i) {
+    background: #f8eadf;
+}
+/* =========================================
+   FINAL CALENDAR DETAILS
+========================================= */
+
+.type-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.type-buttons button {
+    flex: 1;
+    border: none;
+    background: rgba(255,255,255,0.65);
+    color: #554942;
+    padding: 10px;
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+.type-buttons button.type-active {
+    background: #a487a9;
+    color: white;
+}
+
+.event-kind {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 0.5px;
+    opacity: 0.55;
+    margin-bottom: 4px;
+}
+
+.calendar-day.has-event {
+    background: #f8eadf;
+}
+
+.calendar-day.has-event i {
+    color: #d99b82;
+}
+
+.calendar-day.today {
+    background: #f3c6c6;
+    box-shadow:
+        0 0 0 2px #fffdf7,
+        0 0 0 4px #d99b82;
+    font-weight: 600;
+}
+
+.calendar-day.selected {
+    background: #e5d9f2;
+    box-shadow: 0 3px 8px rgba(70,50,60,0.12);
+    transform: scale(1.05);
+}
+.app-body {
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+.app-label {
+    display: inline-block;
+    background: #fffdf7;
+    padding: 7px 12px;
+    border-radius: 20px;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    box-shadow: 2px 4px 10px rgba(60,50,40,0.08);
+    transform: rotate(-2deg);
+    margin-bottom: 12px;
+}
+.daily-vibe {
+    background: #f8d9df;
+    padding: 14px 16px;
+    margin: 20px 5px 18px;
+    border-radius: 18px;
+    box-shadow: 3px 5px 12px rgba(70,50,50,0.08);
+    transform: rotate(-0.7deg);
+}
+
+.daily-vibe span {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    opacity: 0.55;
+    margin-bottom: 5px;
+}
+
+.daily-vibe strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 9px;
+}
+
+.daily-vibe button {
+    border: none;
+    background: #fffdf7;
+    color: #554942;
+    padding: 7px 11px;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 8px;
+    cursor: pointer;
+    box-shadow: 1px 2px 5px rgba(60,50,40,0.08);
+}
+
+.daily-vibe button:active {
+    transform: scale(0.95);
+}
+.calendar {
+    top: 61%;
+    right: 8%;
+}
+
+.me {
+    top: 68%;
+    right: 8%;
+}
+.growth {
+    top: 68%;
+    left: 8%;
+}
+
+.calendar {
+    top: 68%;
+    right: 8%;
+}
+
+.me {
+    top: 76%;
+    right: 8%;
+}
+.room-button {
+    z-index: 20;
+}
+
+.daily-vibe {
+    position: relative;
+    z-index: 1;
+}
+.daily-vibe {
+    border: 2px dashed rgba(100, 70, 80, 0.18);
+}
+
+.daily-vibe button {
+    transition: transform 0.15s ease;
+}
+
+.daily-vibe button:hover {
+    transform: rotate(-2deg) scale(1.03);
+}
+.daily-vibe button::before {
+    content: "✦ ";
+}
+
+.daily-vibe button::after {
+    content: " ✦";
+}
+/* APP INTRO */
+
+.intro-screen {
+  transition: opacity 0.5s ease;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: #f5e9dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.intro-content {
+    padding: 30px;
+}
+
+.intro-symbol {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+.intro-content p {
+    font-size: 9px;
+    letter-spacing: 3px;
+    opacity: 0.55;
+    margin-bottom: 8px;
+}
+
+.intro-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin: 0 0 8px;
+}
+
+.intro-content span {
+    display: block;
+    font-size: 10px;
+    opacity: 0.6;
+    margin-bottom: 25px;
+}
+
+.intro-content button {
+    border: none;
+    background: #a487a9;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+}
+.intro-symbol {
+    animation: introFloat 2s ease-in-out infinite;
+}
+
+@keyframes introFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+.room-sparkle {
+    position: absolute;
+    top: 18%;
+    right: 12%;
+    font-size: 18px;
+    opacity: 0.45;
+    animation: sparkleFloat 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes sparkleFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(8deg);
+    }
+}
+.sparkle-two {
+    top: 28%;
+    right: 24%;
+    font-size: 13px;
+    animation-delay: 0.8s;
+}
+
+.sparkle-three {
+    top: 35%;
+    left: 15%;
+    font-size: 16px;
+    animation-delay: 1.5s;
+}

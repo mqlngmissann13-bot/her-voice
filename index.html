@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Little World ✦</title>
+<meta name="theme-color" content="#f5e9dc">
+
+    <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg">
+</head>
+
+<body class="app-body">
+  <!-- APP INTRO -->
+
+<div id="introScreen" class="intro-screen">
+
+    <div class="intro-content">
+
+        <div class="intro-symbol">✦</div>
+
+        <p>WELCOME TO</p>
+
+        <h1>MY LITTLE WORLD</h1>
+
+        <span>your tiny corner of the internet ♡</span>
+
+        <button onclick="enterWorld()">
+            tap to enter ✦
+        </button>
+
+    </div>
+
+</div>
+
+    <main class="room">
+      <div class="room-sparkle">✦</div>
+      <div class="room-sparkle sparkle-two">✧</div>
+<div class="room-sparkle sparkle-three">·</div>
+
+        <!-- TITLE -->
+      <div class="app-label">
+    ✦ MY PRIVATE LITTLE UNIVERSE ✦
+      </div>
+        <header class="welcome">
+            <h1>MY LITTLE WORLD ✦</h1>
+            <p>Wednesday · October 7, 2026</p>
+        </header>
+
+        <!-- BRAIN STATUS -->
+        <section class="status-card">
+            <p>brain status:</p>
+            <div class="progress">
+                <span></span>
+            </div>
+
+            <p>current era:</p>
+            <strong>trying to figure it out ☆</strong>
+
+            <p>social battery:</p>
+            <div class="progress">
+                <span class="battery"></span>
+            </div>
+        </section>
+
+        <!-- WINDOW -->
+        <div class="window">
+            <div class="moon">☾</div>
+            <div class="stars">✦ · ˚ ✧ · ˚ ✦</div>
+            <p>a little corner of the internet<br>
+            that is completely yours ♡</p>
+        </div>
+
+        <!-- DESK -->
+        <div class="desk">
+            <div class="computer" onclick="openSection('lore')">
+                <div class="screen">
+                    dream<br>
+                    plan<br>
+                    do<br>
+                    repeat ♡
+                </div>
+            </div>
+
+            <button class="plant growth-plant" onclick="openSection('growth')">
+    🌱
+            </button>
+            <div class="camera" onclick="openSection('memories')">📷</div>
+        </div>
+
+        <!-- BED -->
+        <div class="bed">
+            <div class="pillow">♡</div>
+            <div class="blanket"></div>
+            <div class="cat">🐈</div>
+        </div>
+
+        <!-- INTERACTIVE BUTTONS -->
+        <button class="room-button lore" onclick="openSection('lore')">
+            📖 THE LORE
+        </button>
+
+        <button class="room-button memories" onclick="openSection('memories')">
+            📸 MEMORIES
+        </button>
+
+        <button class="room-button music" onclick="openSection('music')">
+            🎧 MUSIC
+        </button>
+
+        <button class="room-button mood" onclick="openSection('mood')">
+            🧸 MOOD
+        </button>
+      
+      <button class="room-button growth" onclick="openSection('growth')">
+    🌱 GROWTH
+      </button>
+      
+      <button class="room-button calendar" onclick="openSection('calendar')">
+    📅 LIFE
+      </button>
+      
+      <button class="room-button me" onclick="openSection('me')">
+    🪞 ME
+      </button>
+
+      <!-- DAILY VIBE -->
+
+<div class="daily-vibe">
+
+    <span>✦ TODAY'S VIBE</span>
+
+    <strong id="dailyVibe">
+        figuring it out, but cute ♡
+    </strong>
+
+    <button onclick="changeVibe()">
+        change vibe
+    </button>
+
+</div>
+
+        <!-- TODAY'S LORE -->
+        <div class="little-note">
+            <b>today's lore:</b>
+            <p>be kind to yourself ♡</p>
+            <p>small steps count</p>
+        </div>
+
+        <!-- BOTTOM NAV -->
+        <nav>
+            <button>⌂<small>My Room</small></button>
+            <button onclick="openSection('lore')">♡<small>The Lore</small></button>
+            <button onclick="openSection('memories')">▣<small>Memories</small></button>
+            <button onclick="openSection('music')">♫<small>My Music</small></button>
+        </nav>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

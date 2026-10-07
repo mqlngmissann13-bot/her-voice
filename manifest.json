@@ -1,0 +1,17 @@
+{
+    "name": "My Little World",
+    "short_name": "My Little World",
+    "description": "My private little universe ✦",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f5e9dc",
+    "theme_color": "#f5e9dc",
+    "orientation": "portrait",
+    "icons": [
+    {
+        "src": "icon.svg",
+        "sizes": "any",
+        "type": "image/svg+xml"
+    }
+    ]
+}
