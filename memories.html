@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memories</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="memories-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="memories-header">
+            <p>little moments</p>
+            <h1>MEMORIES ✦</h1>
+            <span>things worth keeping</span>
+        </header>
+
+        <section class="memory-intro">
+
+            <div class="camera-big">📸</div>
+
+            <h2>capture the moment</h2>
+
+            <p>
+                Add a photo and give the moment a little story.
+            </p>
+
+            <label class="upload-button">
+                ＋ add a memory
+                <input
+                    type="file"
+                    id="memoryPhoto"
+                    accept="image/*"
+                    onchange="previewMemory()"
+                >
+            </label>
+
+        </section>
+
+        <section
+            id="memoryPreview"
+            class="memory-preview hidden"
+        >
+
+            <img id="previewImage" alt="Memory preview">
+
+            <input
+                type="text"
+                id="memoryTitle"
+                placeholder="name this moment..."
+            >
+
+            <textarea
+                id="memoryCaption"
+                placeholder="what's the lore?"
+            ></textarea>
+
+            <button onclick="saveMemory()">
+                save this memory ♡
+            </button>
+
+        </section>
+
+        <section id="memoryArchive">
+
+            <h2 class="archive-title">
+                your little archive
+            </h2>
+
+            <div id="memoryList"></div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        let selectedImage = "";
+
+        function previewMemory() {
+
+            const file =
+                document.getElementById("memoryPhoto").files[0];
+
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+
+                selectedImage = event.target.result;
+
+                document.getElementById("previewImage").src =
+                    selectedImage;
+
+                document
+                    .getElementById("memoryPreview")
+                    .classList.remove("hidden");
+            };
+
+            reader.readAsDataURL(file);
+        }
+
+        function saveMemory() {
+
+            const title =
+                document.getElementById("memoryTitle").value;
+
+            const caption =
+                document.getElementById("memoryCaption").value;
+
+            if (!selectedImage) return;
+
+            const memory = {
+                image: selectedImage,
+                title: title || "untitled memory",
+                caption: caption || "",
+                date: new Date().toLocaleDateString()
+            };
+
+            const memories =
+                JSON.parse(localStorage.getItem("memories")) || [];
+
+            memories.unshift(memory);
+
+            localStorage.setItem(
+                "memories",
+                JSON.stringify(memories)
+            );
+
+            document.getElementById("memoryTitle").value = "";
+            document.getElementById("memoryCaption").value = "";
+
+            document
+                .getElementById("memoryPreview")
+                .classList.add("hidden");
+
+            selectedImage = "";
+
+            displayMemories();
+        }
+
+        function displayMemories() {
+
+            const list =
+                document.getElementById("memoryList");
+
+            const memories =
+                JSON.parse(localStorage.getItem("memories")) || [];
+
+            list.innerHTML = "";
+
+            memories.forEach((memory) => {
+
+                const card =
+                    document.createElement("article");
+
+                card.className = "memory-card";
+
+                card.innerHTML = `
+                    <img src="${memory.image}" alt="Memory">
+
+                    <div class="memory-info">
+
+                        <small>${memory.date}</small>
+
+                        <h3>${memory.title}</h3>
+
+                        <p>${memory.caption}</p>
+
+                    </div>
+                `;
+
+                list.appendChild(card);
+
+            });
+        }
+
+        displayMemories();
+
+    </script>
+
+</body>
+</html>

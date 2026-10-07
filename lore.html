@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Lore</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="lore-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="lore-header">
+
+    <p>my little archive</p>
+
+    <h1>THE LORE ✦</h1>
+
+    <span>things I thought, felt & remembered</span>
+
+</header>
+
+<section class="era-card">
+
+    <p>✦ CURRENT ERA</p>
+
+    <input
+        type="text"
+        id="eraInput"
+        placeholder="what era are you in?"
+    >
+
+    <button onclick="saveEra()">save my era ♡</button>
+
+    <small id="eraMessage"></small>
+
+</section>
+
+        <section class="entry">
+
+            <div class="entry-top">
+                <span>OCTOBER 7, 2026</span>
+                <span>♡</span>
+            </div>
+
+            <h2>today's entry</h2>
+
+            <textarea
+                id="diaryText"
+                placeholder="what's on your mind?"
+            ></textarea>
+
+            <div class="entry-tools">
+                <button onclick="saveEntry()">save this moment ♡</button>
+                <button onclick="clearEntry()">clear</button>
+            </div>
+
+            <p id="savedMessage"></p>
+
+        </section>
+
+        <section class="little-prompts">
+
+            <p>little prompts for you...</p>
+
+            <button onclick="addPrompt('something making me happy:')">
+                ✦ something making me happy
+            </button>
+
+            <button onclick="addPrompt('something I need to let go of:')">
+                ☁ something I need to let go of
+            </button>
+
+            <button onclick="addPrompt('currently obsessed with:')">
+                🎧 currently obsessed with
+            </button>
+
+            <button onclick="addPrompt('today felt like:')">
+                🍓 today felt like
+            </button>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        const diary = document.getElementById("diaryText");
+        const message = document.getElementById("savedMessage");
+
+        diary.value = localStorage.getItem("myLore") || "";
+
+        function saveEntry() {
+
+            localStorage.setItem("myLore", diary.value);
+
+            message.textContent = "saved to your little world ♡";
+
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2500);
+        }
+
+        function clearEntry() {
+
+            diary.value = "";
+            localStorage.removeItem("myLore");
+
+            message.textContent = "entry cleared.";
+        }
+
+        function addPrompt(prompt) {
+
+            if (diary.value.trim() !== "") {
+                diary.value += "\n\n";
+            }
+
+            diary.value += prompt + "\n";
+            diary.focus();
+        }
+
+    </script>
+
+</body>
+</html>

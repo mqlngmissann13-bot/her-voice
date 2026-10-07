@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Music</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="music-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="music-header">
+
+            <p>the soundtrack of my life</p>
+
+            <h1>MY MUSIC ✦</h1>
+
+            <span>songs attached to little moments</span>
+
+        </header>
+
+        <!-- CURRENT SONG -->
+
+        <section class="now-playing">
+
+            <div class="album">
+
+                <div class="cd">
+                    <span>♫</span>
+                </div>
+
+            </div>
+
+            <p class="playing-label">CURRENTLY PLAYING</p>
+
+            <h2 id="songTitle">my current song</h2>
+
+            <p id="songArtist">add your favorite song below ♡</p>
+
+            <a
+                id="spotifyButton"
+                class="spotify-button"
+                href="#"
+                target="_blank"
+            >
+                ♫ open in Spotify
+            </a>
+
+        </section>
+
+        <!-- ADD SONG -->
+
+        <section class="add-song">
+
+            <h2>add to the soundtrack ✦</h2>
+
+            <input
+                type="text"
+                id="newSong"
+                placeholder="song title..."
+            >
+
+            <input
+                type="text"
+                id="newArtist"
+                placeholder="artist..."
+            >
+
+            <input
+                type="url"
+                id="newLink"
+                placeholder="Spotify link..."
+            >
+
+            <button onclick="addSong()">
+                add song ♡
+            </button>
+
+        </section>
+
+        <!-- PLAYLIST -->
+
+        <section class="playlist">
+
+            <h2>my little playlist</h2>
+
+            <div id="songList"></div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        let songs =
+            JSON.parse(localStorage.getItem("mySongs")) || [];
+
+        function addSong() {
+
+            const title =
+                document.getElementById("newSong").value.trim();
+
+            const artist =
+                document.getElementById("newArtist").value.trim();
+
+            const link =
+                document.getElementById("newLink").value.trim();
+
+            if (!title || !link) {
+                alert("Add a song title and Spotify link ♡");
+                return;
+            }
+
+            const song = {
+                title: title,
+                artist: artist || "unknown artist",
+                link: link
+            };
+
+            songs.unshift(song);
+
+            localStorage.setItem(
+                "mySongs",
+                JSON.stringify(songs)
+            );
+
+            document.getElementById("newSong").value = "";
+            document.getElementById("newArtist").value = "";
+            document.getElementById("newLink").value = "";
+
+            displaySongs();
+
+        }
+
+        function playSong(index) {
+
+            const song = songs[index];
+
+            document.getElementById("songTitle").textContent =
+                song.title;
+
+            document.getElementById("songArtist").textContent =
+                song.artist;
+
+            document.getElementById("spotifyButton").href =
+                song.link;
+
+        }
+
+        function displaySongs() {
+
+            const list =
+                document.getElementById("songList");
+
+            list.innerHTML = "";
+
+            songs.forEach((song, index) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "song-item";
+
+                item.innerHTML = `
+                    <div>
+                        <strong>${song.title}</strong>
+                        <small>${song.artist}</small>
+                    </div>
+
+                    <button onclick="playSong(${index})">
+                        ♫
+                    </button>
+                `;
+
+                list.appendChild(item);
+
+            });
+
+        }
+
+        displaySongs();
+
+    </script>
+
+</body>
+
+</html>

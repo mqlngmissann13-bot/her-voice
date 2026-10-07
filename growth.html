@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Growth</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="growth-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="growth-header">
+
+            <p>slowly becoming</p>
+
+            <h1>MY GROWTH ✦</h1>
+
+            <span>little steps still count</span>
+
+        </header>
+
+        <!-- CURRENT GOAL -->
+
+        <section class="growth-card">
+
+            <div class="plant-big">🌱</div>
+
+            <h2>what am I growing?</h2>
+
+            <input
+                type="text"
+                id="goalInput"
+                placeholder="a goal, habit, or dream..."
+            >
+
+            <button onclick="saveGoal()">
+                plant this goal ♡
+            </button>
+
+            <p id="goalMessage"></p>
+
+        </section>
+
+        <!-- SMALL WINS -->
+
+        <section class="wins-card">
+
+            <h2>tiny wins ✦</h2>
+
+            <textarea
+                id="winInput"
+                placeholder="something I did well today..."
+            ></textarea>
+
+            <button onclick="saveWin()">
+                keep this win ♡
+            </button>
+
+            <div id="winList"></div>
+
+        </section>
+
+        <!-- CURRENT GOAL DISPLAY -->
+
+        <section class="goal-display">
+
+            <p>currently growing ✿</p>
+
+            <div id="currentGoal">
+                nothing planted yet ♡
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        const savedGoal =
+            localStorage.getItem("growthGoal");
+
+        if (savedGoal) {
+
+            document.getElementById("currentGoal").innerHTML =
+                "🌱 " + savedGoal;
+
+        }
+
+        function saveGoal() {
+
+            const input =
+                document.getElementById("goalInput");
+
+            const goal =
+                input.value.trim();
+
+            if (!goal) {
+
+                document.getElementById("goalMessage").textContent =
+                    "plant something first ♡";
+
+                return;
+            }
+
+            localStorage.setItem(
+                "growthGoal",
+                goal
+            );
+
+            document.getElementById("currentGoal").innerHTML =
+                "🌱 " + goal;
+
+            document.getElementById("goalMessage").textContent =
+                "planted ✦";
+
+            input.value = "";
+
+        }
+
+        function saveWin() {
+
+            const input =
+                document.getElementById("winInput");
+
+            const win =
+                input.value.trim();
+
+            if (!win) return;
+
+            const wins =
+                JSON.parse(
+                    localStorage.getItem("growthWins")
+                ) || [];
+
+            wins.unshift({
+                text: win,
+                date: new Date().toLocaleDateString()
+            });
+
+            localStorage.setItem(
+                "growthWins",
+                JSON.stringify(wins)
+            );
+
+            input.value = "";
+
+            displayWins();
+
+        }
+
+        function displayWins() {
+
+            const list =
+                document.getElementById("winList");
+
+            const wins =
+                JSON.parse(
+                    localStorage.getItem("growthWins")
+                ) || [];
+
+            list.innerHTML = "";
+
+            wins.forEach((win) => {
+
+                const item =
+                    document.createElement("div");
+
+                item.className = "win-item";
+
+                item.innerHTML = `
+                    <span>✦</span>
+                    <div>
+                        <strong>${win.text}</strong>
+                        <small>${win.date}</small>
+                    </div>
+                `;
+
+                list.appendChild(item);
+
+            });
+
+        }
+
+        displayWins();
+
+    </script>
+
+</body>
+
+</html>

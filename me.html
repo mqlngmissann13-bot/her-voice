@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Me</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="me-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="me-header">
+
+            <p>a little introduction</p>
+
+            <h1>THIS IS ME ✦</h1>
+
+            <span>the person behind this little world</span>
+
+        </header>
+
+        <!-- PROFILE -->
+
+        <section class="me-card">
+
+            <div class="avatar">
+                ♡
+            </div>
+
+            <h2 id="nameDisplay">my name</h2>
+
+            <p id="bioDisplay">
+                just figuring things out one day at a time.
+            </p>
+
+        </section>
+
+        <!-- ABOUT ME -->
+
+        <section class="about-card">
+
+            <h2>little things about me ✦</h2>
+
+            <label>
+                my name
+                <input
+                    type="text"
+                    id="nameInput"
+                    placeholder="what should I be called?"
+                >
+            </label>
+
+            <label>
+                currently into
+                <input
+                    type="text"
+                    id="interestInput"
+                    placeholder="music, books, games..."
+                >
+            </label>
+
+            <label>
+                current obsession
+                <input
+                    type="text"
+                    id="obsessionInput"
+                    placeholder="something I can't stop thinking about..."
+                >
+            </label>
+
+            <label>
+                comfort thing
+                <input
+                    type="text"
+                    id="comfortInput"
+                    placeholder="a song, food, place, person..."
+                >
+            </label>
+
+            <label>
+                one little fact
+                <textarea
+                    id="factInput"
+                    placeholder="something people should know about me..."
+                ></textarea>
+            </label>
+
+            <button onclick="saveMe()">
+                save my little profile ♡
+            </button>
+
+            <p id="meMessage"></p>
+
+        </section>
+
+        <!-- DISPLAY -->
+
+        <section class="facts-card">
+
+            <h2>currently ✿</h2>
+
+            <div class="fact-row">
+                <span>♡ into</span>
+                <strong id="interestDisplay">—</strong>
+            </div>
+
+            <div class="fact-row">
+                <span>✦ obsessed with</span>
+                <strong id="obsessionDisplay">—</strong>
+            </div>
+
+            <div class="fact-row">
+                <span>☁ comfort thing</span>
+                <strong id="comfortDisplay">—</strong>
+            </div>
+
+            <div class="fact-row">
+                <span>✎ little fact</span>
+                <strong id="factDisplay">—</strong>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        function saveMe() {
+
+            const profile = {
+
+                name:
+                    document.getElementById("nameInput").value.trim(),
+
+                interest:
+                    document.getElementById("interestInput").value.trim(),
+
+                obsession:
+                    document.getElementById("obsessionInput").value.trim(),
+
+                comfort:
+                    document.getElementById("comfortInput").value.trim(),
+
+                fact:
+                    document.getElementById("factInput").value.trim()
+
+            };
+
+            localStorage.setItem(
+                "myProfile",
+                JSON.stringify(profile)
+            );
+
+            displayProfile();
+
+            document.getElementById("meMessage").textContent =
+                "saved to your little world ✦";
+
+        }
+
+        function displayProfile() {
+
+            const profile =
+                JSON.parse(localStorage.getItem("myProfile"));
+
+            if (!profile) return;
+
+            document.getElementById("nameDisplay").textContent =
+                profile.name || "my name";
+
+            document.getElementById("bioDisplay").textContent =
+                profile.fact ||
+                "just figuring things out one day at a time.";
+
+            document.getElementById("nameInput").value =
+                profile.name || "";
+
+            document.getElementById("interestInput").value =
+                profile.interest || "";
+
+            document.getElementById("obsessionInput").value =
+                profile.obsession || "";
+
+            document.getElementById("comfortInput").value =
+                profile.comfort || "";
+
+            document.getElementById("factInput").value =
+                profile.fact || "";
+
+            document.getElementById("interestDisplay").textContent =
+                profile.interest || "—";
+
+            document.getElementById("obsessionDisplay").textContent =
+                profile.obsession || "—";
+
+            document.getElementById("comfortDisplay").textContent =
+                profile.comfort || "—";
+
+            document.getElementById("factDisplay").textContent =
+                profile.fact || "—";
+
+        }
+
+        displayProfile();
+
+    </script>
+
+</body>
+
+</html>

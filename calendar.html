@@ -1,0 +1,595 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Calendar</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="calendar-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="calendar-header">
+            <p>my little timeline</p>
+            <h1>MY CALENDAR ✦</h1>
+            <span>events, tasks & little plans</span>
+        </header>
+
+        <!-- CALENDAR -->
+
+        <section class="calendar-card">
+
+            <div class="calendar-top">
+
+                <button onclick="changeMonth(-1)">‹</button>
+
+                <h2 id="monthTitle"></h2>
+
+                <button onclick="changeMonth(1)">›</button>
+
+            </div>
+
+            <div class="weekdays">
+                <span>Sun</span>
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+            </div>
+
+            <div id="calendarDays" class="calendar-days"></div>
+
+        </section>
+
+        <!-- ADD -->
+
+        <section class="event-card">
+
+            <h2 id="selectedDateTitle">
+                add something ✦
+            </h2>
+
+            <div class="type-buttons">
+
+                <button
+                    id="eventTypeButton"
+                    class="type-active"
+                    onclick="chooseType('event')">
+                    📌 EVENT
+                </button>
+
+                <button
+                    id="taskTypeButton"
+                    onclick="chooseType('task')">
+                    ☑ TASK
+                </button>
+
+            </div>
+
+            <input
+                type="text"
+                id="eventTitle"
+                placeholder="what's happening?"
+            >
+
+            <textarea
+                id="eventNote"
+                placeholder="little note..."
+            ></textarea>
+
+            <button onclick="saveEvent()">
+                save to my calendar ♡
+            </button>
+
+            <p id="eventMessage"></p>
+
+        </section>
+
+        <!-- UPCOMING -->
+
+        <section class="upcoming-card">
+
+            <h2>upcoming ✿</h2>
+
+            <div id="eventList"></div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        let currentDate = new Date();
+
+        let selectedDate = new Date();
+
+        let selectedType = "event";
+
+        let events =
+            JSON.parse(localStorage.getItem("myCalendar")) || {};
+
+
+        /* DATE */
+
+        function formatDate(date) {
+
+            const year = date.getFullYear();
+
+            const month =
+                String(date.getMonth() + 1).padStart(2, "0");
+
+            const day =
+                String(date.getDate()).padStart(2, "0");
+
+            return `${year}-${month}-${day}`;
+        }
+
+
+        /* CALENDAR */
+
+        function renderCalendar() {
+
+            const year = currentDate.getFullYear();
+
+            const month = currentDate.getMonth();
+
+            const firstDay =
+                new Date(year, month, 1).getDay();
+
+            const daysInMonth =
+                new Date(year, month + 1, 0).getDate();
+
+            const monthName =
+                currentDate.toLocaleDateString(
+                    "en-US",
+                    {
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+            document.getElementById("monthTitle").textContent =
+                monthName;
+
+            const container =
+                document.getElementById("calendarDays");
+
+            container.innerHTML = "";
+
+
+            /* EMPTY DAYS */
+
+            for (let i = 0; i < firstDay; i++) {
+
+                const blank =
+                    document.createElement("div");
+
+                blank.className =
+                    "calendar-day empty";
+
+                container.appendChild(blank);
+
+            }
+
+
+            /* NUMBERED DAYS */
+
+            for (let day = 1; day <= daysInMonth; day++) {
+
+                const cell =
+                    document.createElement("button");
+
+                cell.className =
+                    "calendar-day";
+
+                const date =
+                    new Date(year, month, day);
+
+                const dateKey =
+                    formatDate(date);
+
+
+                /* TODAY */
+
+                const today =
+                    new Date();
+
+                if (
+                    date.getDate() === today.getDate() &&
+                    date.getMonth() === today.getMonth() &&
+                    date.getFullYear() === today.getFullYear()
+                ) {
+                    cell.classList.add("today");
+                }
+
+
+                /* SAVED ITEMS */
+
+                if (events[dateKey]) {
+                    cell.classList.add("has-event");
+                }
+
+
+                /* SELECTED */
+
+                if (
+                    formatDate(selectedDate) === dateKey
+                ) {
+                    cell.classList.add("selected");
+                }
+
+
+                cell.innerHTML = `
+                    <span>${day}</span>
+                    ${
+                        events[dateKey]
+                        ? "<i>•</i>"
+                        : ""
+                    }
+                `;
+
+
+                cell.onclick = function() {
+
+                    selectedDate = date;
+
+                    renderCalendar();
+
+                    updateSelectedDate();
+
+                };
+
+
+                container.appendChild(cell);
+
+            }
+
+        }
+
+
+        /* SELECTED DATE */
+
+        function updateSelectedDate() {
+
+            const readable =
+                selectedDate.toLocaleDateString(
+                    "en-US",
+                    {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric"
+                    }
+                );
+
+            document.getElementById(
+                "selectedDateTitle"
+            ).textContent =
+                "for " + readable + " ✦";
+
+        }
+
+
+        /* MONTH */
+
+        function changeMonth(direction) {
+
+            currentDate.setMonth(
+                currentDate.getMonth() + direction
+            );
+
+            localStorage.setItem(
+                "calendarMonth",
+                currentDate.toISOString()
+            );
+
+            renderCalendar();
+
+        }
+
+
+        /* EVENT / TASK */
+
+        function chooseType(type) {
+
+            selectedType = type;
+
+            const eventButton =
+                document.getElementById(
+                    "eventTypeButton"
+                );
+
+            const taskButton =
+                document.getElementById(
+                    "taskTypeButton"
+                );
+
+            eventButton.classList.remove(
+                "type-active"
+            );
+
+            taskButton.classList.remove(
+                "type-active"
+            );
+
+
+            if (type === "event") {
+
+                eventButton.classList.add(
+                    "type-active"
+                );
+
+                document.getElementById(
+                    "eventTitle"
+                ).placeholder =
+                    "what's happening?";
+
+            } else {
+
+                taskButton.classList.add(
+                    "type-active"
+                );
+
+                document.getElementById(
+                    "eventTitle"
+                ).placeholder =
+                    "what needs to be done?";
+
+            }
+
+        }
+
+
+        /* SAVE */
+
+        function saveEvent() {
+
+            const title =
+                document.getElementById(
+                    "eventTitle"
+                ).value.trim();
+
+            const note =
+                document.getElementById(
+                    "eventNote"
+                ).value.trim();
+
+
+            if (!title) {
+
+                document.getElementById(
+                    "eventMessage"
+                ).textContent =
+                    "add something first ♡";
+
+                return;
+
+            }
+
+
+            const key =
+                formatDate(selectedDate);
+
+
+            if (!events[key]) {
+                events[key] = [];
+            }
+
+
+            events[key].push({
+
+                title: title,
+
+                note: note,
+
+                type: selectedType,
+
+                done: false
+
+            });
+
+
+            localStorage.setItem(
+                "myCalendar",
+                JSON.stringify(events)
+            );
+
+
+            document.getElementById(
+                "eventTitle"
+            ).value = "";
+
+            document.getElementById(
+                "eventNote"
+            ).value = "";
+
+
+            document.getElementById(
+                "eventMessage"
+            ).textContent =
+                "saved to your timeline ✦";
+
+
+            renderCalendar();
+
+            displayEvents();
+
+        }
+
+
+        /* DISPLAY */
+
+        function displayEvents() {
+
+            const list =
+                document.getElementById(
+                    "eventList"
+                );
+
+            list.innerHTML = "";
+
+
+            const allEvents = [];
+
+
+            Object.keys(events).forEach(date => {
+
+                events[date].forEach(
+                    (event, index) => {
+
+                        allEvents.push({
+
+                            date: date,
+
+                            event: event,
+
+                            index: index
+
+                        });
+
+                    }
+                );
+
+            });
+
+
+            allEvents.sort((a, b) =>
+                a.date.localeCompare(b.date)
+            );
+
+
+            if (allEvents.length === 0) {
+
+                list.innerHTML =
+                    "<p class='empty-events'>nothing planned yet ♡</p>";
+
+                return;
+
+            }
+
+
+            allEvents.forEach(item => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "event-item";
+
+
+                if (item.event.done) {
+                    card.classList.add(
+                        "completed"
+                    );
+                }
+
+
+                const icon =
+                    item.event.type === "task"
+                    ? "☑"
+                    : "📌";
+
+
+                card.innerHTML = `
+
+                    <small>
+                        ${item.date}
+                    </small>
+
+                    <div>
+
+                        <span class="event-kind">
+                            ${icon}
+                            ${item.event.type || "event"}
+                        </span>
+
+                        <strong>
+                            ${item.event.title}
+                        </strong>
+
+                        <p>
+                            ${item.event.note || ""}
+                        </p>
+
+                    </div>
+
+                    <button
+                        onclick="
+                            toggleDone(
+                                '${item.date}',
+                                ${item.index}
+                            )
+                        "
+                    >
+                        ${
+                            item.event.done
+                            ? "✓"
+                            : "○"
+                        }
+                    </button>
+
+                `;
+
+
+                list.appendChild(card);
+
+            });
+
+        }
+
+
+        /* COMPLETE */
+
+        function toggleDone(date, index) {
+
+            events[date][index].done =
+                !events[date][index].done;
+
+
+            localStorage.setItem(
+                "myCalendar",
+                JSON.stringify(events)
+            );
+
+
+            renderCalendar();
+
+            displayEvents();
+
+        }
+
+
+        /* REMEMBER MONTH */
+
+        const savedMonth =
+            localStorage.getItem(
+                "calendarMonth"
+            );
+
+        if (savedMonth) {
+
+            currentDate =
+                new Date(savedMonth);
+
+        }
+
+
+        renderCalendar();
+
+        updateSelectedDate();
+
+        displayEvents();
+
+    </script>
+
+</body>
+
+</html>

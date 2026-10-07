@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Mood</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="mood-page">
+
+        <a href="index.html" class="back">← my room</a>
+
+        <header class="mood-header">
+
+            <p>a tiny check-in</p>
+
+            <h1>MY MOOD ✦</h1>
+
+            <span>how are we feeling today?</span>
+
+        </header>
+
+        <!-- MOOD PICKER -->
+
+        <section class="mood-card">
+
+            <h2>today's feeling</h2>
+
+            <div class="mood-options">
+
+                <button onclick="chooseMood('happy', '☀️')">
+                    ☀️
+                    <small>happy</small>
+                </button>
+
+                <button onclick="chooseMood('loved', '🥰')">
+                    🥰
+                    <small>loved</small>
+                </button>
+
+                <button onclick="chooseMood('tired', '🫠')">
+                    🫠
+                    <small>tired</small>
+                </button>
+
+                <button onclick="chooseMood('overwhelmed', '😵‍💫')">
+                    😵‍💫
+                    <small>overwhelmed</small>
+                </button>
+
+                <button onclick="chooseMood('sad', '🥹')">
+                    🥹
+                    <small>sad</small>
+                </button>
+
+                <button onclick="chooseMood('meh', '😐')">
+                    😐
+                    <small>meh</small>
+                </button>
+
+            </div>
+
+            <p id="selectedMood">
+                choose your vibe ♡
+            </p>
+
+        </section>
+
+        <!-- NOTE -->
+
+        <section class="mood-note">
+
+            <h2>today felt like...</h2>
+
+            <textarea
+                id="moodNote"
+                placeholder="tell me a little about today..."
+            ></textarea>
+
+            <button onclick="saveMood()">
+                save today's mood ♡
+            </button>
+
+            <p id="moodMessage"></p>
+
+        </section>
+
+        <!-- LAST MOOD -->
+
+        <section class="last-mood">
+
+            <p>your last check-in ✦</p>
+
+            <div id="lastMood">
+                no mood saved yet ♡
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        let selectedMood = "";
+
+        let selectedEmoji = "";
+
+        function chooseMood(mood, emoji) {
+
+            selectedMood = mood;
+
+            selectedEmoji = emoji;
+
+            document.getElementById("selectedMood").textContent =
+                emoji + " feeling " + mood + " today ♡";
+
+        }
+
+        function saveMood() {
+
+            if (!selectedMood) {
+
+                document.getElementById("moodMessage").textContent =
+                    "choose a mood first ♡";
+
+                return;
+
+            }
+
+            const note =
+                document.getElementById("moodNote").value.trim();
+
+            const moodData = {
+
+                mood: selectedMood,
+
+                emoji: selectedEmoji,
+
+                note: note || "no words today.",
+
+                date: new Date().toLocaleDateString()
+
+            };
+
+            localStorage.setItem(
+                "lastMood",
+                JSON.stringify(moodData)
+            );
+
+            displayLastMood();
+
+            document.getElementById("moodMessage").textContent =
+                "saved to your little world ✦";
+
+        }
+
+        function displayLastMood() {
+
+            const saved =
+                JSON.parse(localStorage.getItem("lastMood"));
+
+            if (!saved) return;
+
+            document.getElementById("lastMood").innerHTML = `
+
+                <span class="last-emoji">
+                    ${saved.emoji}
+                </span>
+
+                <strong>
+                    feeling ${saved.mood}
+                </strong>
+
+                <small>
+                    ${saved.date}
+                </small>
+
+                <p>
+                    "${saved.note}"
+                </p>
+
+            `;
+
+            document.getElementById("moodNote").value =
+                saved.note === "no words today."
+                ? ""
+                : saved.note;
+
+        }
+
+        displayLastMood();
+
+    </script>
+
+</body>
+
+</html>
